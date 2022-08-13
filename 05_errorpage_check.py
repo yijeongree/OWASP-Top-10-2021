@@ -49,11 +49,15 @@ else: #html에서 오류구문 미발견
     try:
         res = urlopen(url) # url 열기
     except HTTPError as e: # HTTP 에러발생 -> 웹서버 정보 나오는지 검증
+        summ = 0
         html = driver.page_source
         
         #html에 웹서버 정보가 나오는지 검사
         for j in error_list2:
             if j in html:
                 print('에러페이지 정보노출 : 취약')
-    else:
-        print('에러페이지 정보노출 : 안전')
+                break
+            else:
+                summ += 1
+                if summ == int(len(error_list2)):
+                    print('에러페이지 정보노출 : 양호')
