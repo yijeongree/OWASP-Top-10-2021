@@ -16,6 +16,7 @@ text = input('로그인 주소를 입력하세요(www.test.com) : ')
 id = input('ID : ')
 
 url = 'http://' + text
+error = 0
 
 for passwd_length in range(1,3): #자릿수 지정 (1~2)
     admin_passwd = product(words, repeat=passwd_length) #words 안의 문자를 하나씩 끊어서 경우의 수 만들기
